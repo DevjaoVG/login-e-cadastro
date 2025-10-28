@@ -1,0 +1,15 @@
+# Composer
+/vendor/
+composer.json
+composer.lock
+
+# Arquivos de ambiente Dotenv
+.env
+.env.local
+.env.*.local
+
+# IDEs e cache
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
