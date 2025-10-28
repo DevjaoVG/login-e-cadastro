@@ -25,7 +25,7 @@ class UserRepository {
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($data) {
-            return New User($data["name"], $data["email"], $data["password_hash"]);
+            return new User($data["name"], $data["email"], $data["password_hash"]);
         }
 
 

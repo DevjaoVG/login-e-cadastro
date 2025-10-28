@@ -8,10 +8,10 @@ class Database {
 
     private static function getConnection() {
         if (self::$instance == null) {
-            private $host = "localhost";
-            private $user = "root";
-            private $password = "";
-            private $db = "Estudos";
+            $host = "localhost";
+            $user = "root";
+            $password = "";
+            $db = "";
 
 
             self::$instance = new mysqli($this->host, $this->user, $this->password, $this->db); 

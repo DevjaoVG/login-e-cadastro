@@ -14,7 +14,7 @@ class AuthService {
 
     public function register($name, $email, $passaword) {
         if ($this->userRepo->findByEmail($email)) {
-            throw new Exception("E-mail já cadastrado.")
+            throw new Exception("E-mail já cadastrado.");
         }
 
         $passawordHash = password_hash($password, PASSWORD_DEFAULT);
