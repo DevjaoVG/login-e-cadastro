@@ -10,28 +10,24 @@ class Database {
     private static $instance = null;
 
 
-    private static function getConnection() {
+    public static function getConnection() {
         if (self::$instance == null) {
 
             // Cria a instância do Dotenv apontando para a raiz do projeto
-            $dotenv = Dotenv::createImmutable(__DIR__ . "/../../");
+            $dotenv = Dotenv::createImmutable(__DIR__ . "/../../config");
             $dotenv->load();
 
-    
-            $db = $_ENV['DB_NAME'] ?? "meu_banco";
-            $host = $_ENV['DB_HOST'] ?? "localhost";
-            $user = $_ENV['DB_USER'] ?? "root";
-            $password = $_ENV['DB_PASS'] ?? "";
-
-            self::$instance = new mysqli($host, $user, $password, $db); 
-
-            if (self::$instance->connect_error) {
-                die("Connection failed: " . $self::$instance->connect_error);
+            try {
+                $host = $_ENV['DB_HOST'] ?? "localhost";
+                $user = $_ENV['DB_USER'] ?? "root";
+                $password = $_ENV['DB_PASS'] ?? "";
+                $db = $_ENV['DB_NAME'] ?? "meu_banco";
+            } catch (PDOException $e) {
+                die("Erro de conexão: " . $e->getMenssage());
             }
-
             
-            // Define charset para UTF-8
-            self::$instance->set_charset('utf8mb4');
+
+            self::$instance = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $password);
         }
 
         return self::$instance;

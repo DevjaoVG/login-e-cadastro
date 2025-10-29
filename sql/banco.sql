@@ -1,0 +1,10 @@
+CREATE DATABASE meu_banco;
+USE meu_banco;
+
+
+CREATE TABLE user (
+	id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    passaword VARCHAR(100) NOT NULL
+);

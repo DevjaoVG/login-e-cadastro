@@ -12,7 +12,7 @@ class AuthService {
     }
 
 
-    public function register($name, $email, $passaword) {
+    public function register($name, $email, $password) {
         if ($this->userRepo->findByEmail($email)) {
             throw new Exception("E-mail já cadastrado.");
         }

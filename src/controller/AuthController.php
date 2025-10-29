@@ -1,7 +1,7 @@
 <?php
-
 require_once __DIR__ . "/../config/DataBase.php";
 require_once __DIR__ . "/../services/AuthService.php";
+require_once __DIR__ . "/../repositories/UserRepository.php";
 
 
 class AuthController {
@@ -18,17 +18,17 @@ class AuthController {
     public function register() {
         try {
             $this->authService->register($_POST['name'], $_POST['email'], $_POST['password']);
-            echo "Cadastro Realizado!!!!";
+            echo "Cadastro Realizado!";
         } catch (Exception $e) {
-            echo "Erro" . $e->getMenssage();
+            echo "Erro: " . $e->getMessage();
         }
     }
 
 
     public function login() {
         try {
-            $this->authService->login($_POST["email"], $_POST["senha"]);
-            echo "Login bem sucedido.";
+            $this->authService->login($_POST["email"], $_POST["password"]);
+            echo "Login realizado com sucesso.";
         } catch (Exception $e) {
             echo "Erro" . $e->getMenssage();
         }
@@ -37,7 +37,7 @@ class AuthController {
 
     public function logout() {
         $this->authService->logout();
-        echo "Logout realizado com sucesso.";
+        echo "Logout realizado!";
     }
 }
 

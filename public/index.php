@@ -1,3 +1,14 @@
+<?php
+require_once __DIR__ . "/../src/controller/AuthController.php";
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $authCtl = new AuthController();
+  $authCtl->login();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,23 +28,23 @@
     </div> -->
   
     <div class="d-flex justify-content-center align-items-center vh-100 ">
-      <form id="form" action="../src/controller/AuthController.php" class="d-flex flex-column justify-content-center align-items-center p-5 rounded-4 shadow-lg">
+      <form id="form" action="" class="d-flex flex-column justify-content-center align-items-center p-5 rounded-4 shadow-lg" method="POST">
 
         <h2 class="mb-5">Bem vindo!!</h2>
 
         <div class="d-flex flex-column m-2">
           <label for="nome" class="form-label">Nome</label>
-          <input id="name" type="text" class="form-control" id="nome">
+          <input id="name" name="name" type="text" class="form-control">
         </div>
 
         <div class="d-flex flex-column m-2">
           <label for="nome" class="form-label">E-mail</label>
-          <input id="email" type="text" class="form-control" id="password">
+          <input id="email" name="email" type="text" class="form-control">
         </div>
 
         <div class="d-flex flex-column m-2">
           <label for="" class="form-label">Senha</label>
-          <input id="password" type="text is-invalid" class="form-control">
+          <input id="password" name="password" type="password" class="form-control">
         </div>
         
         <button class="btn btn-primary mt-5">Cadastre-se</button>
